@@ -236,6 +236,7 @@ class ShortestForwarding(app_manager.RyuApp):
         """
             Get access port if dst host.
             access_table: {(sw,port) :(ip, mac)}
+                """
         """
         if access_table:
             if isinstance(access_table.values()[0], tuple):
@@ -244,6 +245,26 @@ class ShortestForwarding(app_manager.RyuApp):
                         dst_port = key[1]
                         return dst_port
         return None
+        """
+        #new
+        if access_table:
+            print("access_table",access_table)
+            my_list = []
+            my_keys =[]
+            for key,value in access_table.items() :
+                my_list.append(value)
+                my_keys.append(key)
+                print ("key is",my_keys)
+                print("my_list is ",my_list)
+            #if isinstance(access_table.items(), tuple):
+            for key,value in access_table.items() :
+                    print("value[0]=",value[0])
+                    print("key[1]=",key[1])
+                    if dst_ip == value[0]:
+                        dst_port = key[1]
+                        return dst_port
+
+        
 
     def get_port_pair_from_link(self, link_to_port, src_dpid, dst_dpid):
         """
