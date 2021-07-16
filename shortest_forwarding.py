@@ -368,7 +368,7 @@ class ShortestForwarding(app_manager.RyuApp):
 
         # inter_link
         if len(path) > 2:
-            for i in xrange(1, len(path)-1):
+            for i in range(1, len(path)-1):
                 port = self.get_port_pair_from_link(link_to_port,
                                                     path[i-1], path[i])
                 port_next = self.get_port_pair_from_link(link_to_port,
@@ -474,7 +474,7 @@ class ShortestForwarding(app_manager.RyuApp):
             path = value[1]
             require_band = value[2]
             assert len(path) > 1
-            for i in xrange(len(path)-1):
+            for i in range(len(path)-1):
                 if (path[i], path[i+1]) == link or (path[i+1], path[i]) == link:
                     chose_flow[key] = value
                     bw += require_band
@@ -587,7 +587,7 @@ class ShortestForwarding(app_manager.RyuApp):
         edges_info = deepcopy(self.awareness.edges)
         for flow in npath:
             for j, path in enumerate(npath[flow]):
-                for i in xrange(len(path) - 1):
+                for i in range(len(path) - 1):
                     if (path[i], path[i + 1]) in edges_info:
                         edges_info[(path[i], path[i + 1])][flow][j] = 1
                     elif (path[i+1], path[i]) in edges_info:
