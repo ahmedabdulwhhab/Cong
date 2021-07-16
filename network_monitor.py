@@ -128,7 +128,7 @@ class NetworkMonitor(app_manager.RyuApp):
         _len = len(path)
         if _len > 1:
             minimal_band_width = min_bw
-            for i in xrange(_len-1):
+            for i in range(_len-1):
                 if setting.prob_bandwidth:   # work for prob
                     pre, curr = path[i], path[i+1]
                     if 'bandwidth' in self.graph[pre][curr]:
@@ -210,7 +210,7 @@ class NetworkMonitor(app_manager.RyuApp):
         _len, edge = len(path), None
         min_bw = setting.MAX_CAPACITY
         if _len > 1:
-            for i in xrange(_len - 1):
+            for i in range(_len - 1):
                 if (path[i], path[i+1]) in self.res_bw:
                     # 不显示负数， 但是会造成小问题： 两条数据流 2M
                     # self.res_bw[(path[i], path[i+1])] = max(self.res_bw[(path[i], path[i+1])] - require_bd, 0)
@@ -234,7 +234,7 @@ class NetworkMonitor(app_manager.RyuApp):
         s1, s2 = 0, 0
         if _len > 1:
             minimal_band_width = setting.MAX_CAPACITY
-            for i in xrange(_len - 1):
+            for i in range(_len - 1):
                 pre, curr = path[i], path[i + 1]
                 if 'bandwidth' in self.graph[pre][curr]:
                     bw = self.graph[pre][curr]['bandwidth']
@@ -259,7 +259,7 @@ class NetworkMonitor(app_manager.RyuApp):
         #     self.res_bw[src_sw][dst_sw] = self.graph[src_sw][dst_sw]['bandwidth']
         for value in choose_flow:
             path = value[1]
-            for i in xrange(len(path)-1):
+            for i in range(len(path)-1):
                 if (path[i], path[i + 1]) in self.res_bw:
                     self.res_bw[(path[i], path[i + 1])] += value[2]
                     if self.res_bw[(path[i], path[i + 1])] > setting.MAX_CAPACITY:
